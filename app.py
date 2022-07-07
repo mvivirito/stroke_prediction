@@ -7,7 +7,7 @@ app = Flask(__name__)
 # use decorators to link the function to a url
 @app.route('/')
 def home():
-    return "Hello, World!"  # return a string
+    return redirect(url_for('login'))
 
 # Route for handling the login page logic
 @app.route('/login', methods=['GET', 'POST'])
@@ -20,15 +20,9 @@ def login():
             return redirect(url_for('main'))
     return render_template('login.html', error=error)
 
-@app.route('/welcome')
-def welcome():
-    return render_template('welcome.html')  # render a template
-
-# use decorators to link the function to a url
 @app.route('/main')
 def main():
-    return "Hello, World!"  # return a string
-
+    return render_template('main.html')  # render a template
 
 # start the server with the 'run()' method
 if __name__ == '__main__':
