@@ -41,11 +41,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#" style="color:#000000">&#x1F9E0; Stroke Prediction</a>
+            <a class="navbar-brand" href="#" style="color:#000000">&#x1F9E0; Stroke Predictor</a>
         </div>
         <div id="navbar" class="navbar">
             <ul class="nav navbar-nav">
-                <li class="active" style="background-color:#ebeced"><a href="#" style="color:#000000">Prediction</a></li>
+                <li class="active" style="background-color:#ebeced"><a href="#" style="color:#000000">Make a Prediction</a></li>
                 <li><a href="visual" style="color:#000000">Data Visualization & Table</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -59,33 +59,44 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <div class="container">
-        <h1>Predict stroke likelyhood of patient</h1>
-        <p>The stroke prediciton Machine Learning Model is designed using Random Forest Regression. <br/> BMI,
+        <h1>Predict likelyhood of stroke in patient</h1>
+        <p>This stroke prediciton machine learning model is designed using a Random Forest Classifier. <br/> BMI,
             Smoking History, Age, and Weight are considered as important features.</p>
         <form action="predict" method="POST" class="form-horizontal">
         <div class="form-group">
-        <p>Weather :
-            <select class="form-control" id="weather" name="weather">
-                <option>1. Clear</option>
-                <option>2. Cloudy</option>
-                <option>3. Light Snow or Light Rain</option>
-                <option>4. Heavy Snow or Thunderstorm</option>
+        <p>Gender :
+            <select class="form-control" id="gender" name="gender">
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
             </select>
         </p>
-        <p>Temperature[0-40] C&#176; :
-            <select class="form-control" id="temperature" name="temperature">
-                {% for i in range(0, 41): %}
-                <option>{{ i }}</option>
-                {% endfor %}
-            </select>
-        </p>
-        <p>Humidity[0-100] :
-            <select class="form-control" id="humidity" name="humidity">
+        <p>Age [0-100] :
+            <select class="form-control" id="age" name="age">
                 {% for i in range(0, 101): %}
                 <option>{{ i }}</option>
                 {% endfor %}
             </select>
         </p>
+        <p>Has Hypertension? :
+            <select class="form-control" id="hypertension" name="hypertension">
+                <option value=1>Yes</option> <!-- maybe don't need value -->
+                <option value=0>No</option>
+            </select>
+        </p>
+        <p>Has Heart Disease? :
+            <select class="form-control" id="heartdisease" name="heartdisease">
+                <option value=1>Yes</option> <!-- maybe don't need value -->
+                <option value=0>No</option>
+            </select>
+        </p>
+        <p>Ever Married? :
+            <select class="form-control" id="married" name="married">
+                <option value=1>Yes</option> <!-- maybe don't need value -->
+                <option value=0>No</option>
+            </select>
+        </p>
+        
             <p align="center"><button class="btn btn-primary btn-lg" type="submit">Predict &#x1F9E0; >></button></p>
         </div>
         </form>
