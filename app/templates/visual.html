@@ -59,38 +59,14 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <div class="container">
-        <h1>Predict stroke likelyhood of patient</h1>
-        <p>The stroke prediciton Machine Learning Model is designed using Random Forest Regression. <br/> BMI,
-            Smoking History, Age, and Weight are considered as important features.</p>
-        <form action="predict" method="POST" class="form-horizontal">
-        <div class="form-group">
-        <p>Weather :
-            <select class="form-control" id="weather" name="weather">
-                <option>1. Clear</option>
-                <option>2. Cloudy</option>
-                <option>3. Light Snow or Light Rain</option>
-                <option>4. Heavy Snow or Thunderstorm</option>
-            </select>
-        </p>
-        <p>Temperature[0-40] C&#176; :
-            <select class="form-control" id="temperature" name="temperature">
-                {% for i in range(0, 41): %}
-                <option>{{ i }}</option>
-                {% endfor %}
-            </select>
-        </p>
-        <p>Humidity[0-100] :
-            <select class="form-control" id="humidity" name="humidity">
-                {% for i in range(0, 101): %}
-                <option>{{ i }}</option>
-                {% endfor %}
-            </select>
-        </p>
-            <p align="center"><button class="btn btn-primary btn-lg" type="submit">Predict &#x1F9E0; >></button></p>
-        </div>
-        </form>
+
+        {% for table in table %} 
+        {{ table|safe }} 
+        {% endfor %}
+
     </div>
 </div>
+
 <div>
 
 </div>
