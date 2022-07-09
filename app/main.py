@@ -47,5 +47,5 @@ def main():
 def visual():
     return render_template('visual.html',
                            PageTitle = "Visual",
-                           table=[table_data.to_html(classes='data', index = False)], titles= stroke_data.columns.values)
+                           table=[table_data.to_html(classes=["table-bordered", "table-striped", "table-hover"], index = False)], titles= stroke_data.columns.values)
 

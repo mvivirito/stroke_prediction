@@ -45,7 +45,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active" style="background-color:#ebeced"><a href="#" style="color:#000000">Prediction</a></li>
+                <li class="active" style="background-color:#ebeced"><a href="main" style="color:#000000">Prediction</a></li>
                 <li><a href="visual" style="color:#000000">Data Visualization & Table</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -59,11 +59,11 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <div class="container">
+        <h3>Here are 30 ananymized values from our stroke dataset that was used to train the predictive model.</h3>
 
         {% for table in table %} 
         {{ table|safe }} 
         {% endfor %}
-
     </div>
 </div>
 
