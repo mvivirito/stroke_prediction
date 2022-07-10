@@ -54,13 +54,12 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <div class="container">
-        <h1>likelyhood of stroke?</h1>
+        <h1 style="text-align: center;">likelyhood of stroke:</h1>
         
-        <p align="center" style="font-size:100px; color:#5bc0de; font-weight:bold">&#x1F9E0;  &#x1F9E0;</p>
+        <p align="center" style="font-size:100px; color:#5bc0de; font-weight:bold">&#x1F9E0; Not Likely! &#x1F9E0;</p>
         <hr>
-        <p align="center" style="font-size:30px; color:#de5b7f; font-weight:bold">Accuracy : </p>
+        <p align="center" style="font-size:30px; color:#de5b7f; font-weight:bold">Accuracy : {{ score }} </p>
 
-        <p>{{ predict_attr }}</p>
     </div>
 </div>
 <div>

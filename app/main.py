@@ -8,7 +8,6 @@ from matplotlib.figure import Figure
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-
 import app.predictor as predictor
 
 
@@ -25,7 +24,6 @@ target = join(app.static_folder, 'data/stroke-data.csv')
 stroke_data = pd.read_csv(target)
 table_data = stroke_data.head(30)
 
-test_data = "Hello World"
 
 # use decorators to link the function to a url
 @app.route('/')
@@ -52,8 +50,7 @@ def main():
 def visual():
     return render_template('visual.html',
                            PageTitle = "Visual",
-                           table=[table_data.to_html(classes=["table-bordered", "table-striped", "table-hover",], index = False)],
-                           test=test_data
+                           table=[table_data.to_html(classes=["table-bordered", "table-striped", "table-hover",], index = False)]
                            )
 
 @app.route("/predict", methods=["GET", "POST"])
@@ -84,11 +81,11 @@ def predict():
                         "smoking" : smoking
                         }
 
-        #ml_model = predictor.predictor(predict_attr)
+        ml_model = predictor.predictor(predict_attr, stroke_data)
         #tmrw_demand = int(round(ml_model["tmrw_demand"]))
-        #score = (round(ml_model["score"], 3)) * 100
+        score = (round(ml_model["score"], 3)) * 100
 
-        return render_template("predict.html",predict_attr=predict_attr )#tmrw_demand=tmrw_demand, score=score)
+        return render_template("predict.html",predict_attr=predict_attr, score=score )
 
 
 
