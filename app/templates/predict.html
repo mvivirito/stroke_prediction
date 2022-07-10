@@ -56,7 +56,14 @@
     <div class="container">
         <h1 style="text-align: center;">likelyhood of stroke:</h1>
         
-        <p align="center" style="font-size:100px; color:#5bc0de; font-weight:bold">&#x1F9E0; {{ prediction  }} &#x1F9E0;</p>
+        {% if prediction == 1 %}
+
+        <p align="center" style="font-size:100px; color:#ee1e1e; font-weight:bold">&#x1F9E0; High &#x1F9E0;</p>
+        
+        {% else %}
+        <p align="center" style="font-size:100px; color:#32eb4b; font-weight:bold">&#x1F9E0; Low &#x1F9E0;</p>
+        {% endif %}
+
         <hr>
         <p align="center" style="font-size:30px; color:#de5b7f; font-weight:bold">Accuracy : {{ score }} </p>
 
