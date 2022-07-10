@@ -1,3 +1,4 @@
+from matplotlib.transforms import Transform
 import pandas as pd
 import sklearn
 from sklearn.model_selection import train_test_split
@@ -33,6 +34,22 @@ def predictor(attr, stroke_data):
 
     model.fit(X_train, y_train)
 
+    new_data = pd.DataFrame(
+    { 'gender': "Female",
+      'age': 67.0,
+      'hypertension' : 0,
+      'heart_disease' : 1,
+      'ever_married' : "Yes",
+      'work_type' : "Private",
+      'Residence_type' : "Urban",
+      'avg_glucose_level' : 68.69,
+      'bmi': 36.6,
+      'smoking_status' : "formerly smoked"
+    }, index=[0])
+
+    transformed_new_data = transformer.transform(new_data)
+
+
     ### evaluate data
     score = model.score(X_test, y_test)
 
@@ -42,8 +59,8 @@ def predictor(attr, stroke_data):
     #our_data["temp"] = int(attr["temp"])
     #our_data["weather"] = int(attr["weather"])
 
-    ### predict tomorrow's demand
-    #tmrw_bike = model.predict(our_data)
-    ml_model =  {"score": score} #{"tmrw_demand" : tmrw_bike.sum(), "score": score}
+    ### predict patients stroke likelyhood
+    prediction = model.predict(transformed_new_data)
+    ml_model =  {"score": score , "prediction": prediction}
 
     return ml_model

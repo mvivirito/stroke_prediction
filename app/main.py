@@ -82,10 +82,11 @@ def predict():
                         }
 
         ml_model = predictor.predictor(predict_attr, stroke_data)
-        #tmrw_demand = int(round(ml_model["tmrw_demand"]))
+
+        predicted = (ml_model["prediction"])
         score = (round(ml_model["score"], 3)) * 100
 
-        return render_template("predict.html",predict_attr=predict_attr, score=score )
+        return render_template("predict.html",predict_attr=predict_attr, score=score, prediction=predicted)
 
 
 
