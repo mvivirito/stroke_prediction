@@ -35,16 +35,16 @@ def predictor(attr, stroke_data):
     model.fit(X_train, y_train)
 
     new_data = pd.DataFrame(
-    { 'gender': "Female",
-      'age': 67.0,
-      'hypertension' : 0,
-      'heart_disease' : 1,
-      'ever_married' : "Yes",
-      'work_type' : "Private",
-      'Residence_type' : "Urban",
-      'avg_glucose_level' : 68.69,
-      'bmi': 36.6,
-      'smoking_status' : "formerly smoked"
+    { 'gender': attr["gender"],
+      'age': int(attr["age"]),
+      'hypertension' : int(attr["hypertension"]),
+      'heart_disease' : int(attr["heartdisease"]),
+      'ever_married' : attr["married"],
+      'work_type' : attr["work_type"],
+      'Residence_type' : attr["residence"],
+      'avg_glucose_level' : int(attr["glucose"]),
+      'bmi': int(attr["bmi"]),
+      'smoking_status' : attr["smoking"]
     }, index=[0])
 
     transformed_new_data = transformer.transform(new_data)
@@ -53,11 +53,6 @@ def predictor(attr, stroke_data):
     ### evaluate data
     score = model.score(X_test, y_test)
 
-    ### add user's input
-    #our_data = pd.read_csv("data/test-data.csv")
-    #our_data["humidity"] = int(attr["humidity"])
-    #our_data["temp"] = int(attr["temp"])
-    #our_data["weather"] = int(attr["weather"])
 
     ### predict patients stroke likelyhood
     prediction = model.predict(transformed_new_data)
