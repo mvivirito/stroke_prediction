@@ -9,7 +9,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-import predictor as predictor
+import app.predictor as predictor
 
 
 from os.path import join
