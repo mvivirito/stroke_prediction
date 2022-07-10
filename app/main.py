@@ -9,6 +9,9 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
+import predictor as predictor
+
+
 from os.path import join
 
 #other requirements
@@ -53,3 +56,41 @@ def visual():
                            test=test_data
                            )
 
+@app.route("/predict", methods=["GET", "POST"])
+def predict():
+    if request.method == "POST":
+        gender = request.values["gender"]
+        age = request.values["age"]
+        hypertension = request.values["hypertension"]
+        heartdisease = request.values["heartdisease"]
+        married = request.values["married"]
+        work_type = request.values["work_type"]
+        residence = request.values["residence"]
+        glucose = request.values["glucose"]
+        bmi = request.values["bmi"]
+        smoking = request.values["smoking"]
+
+
+        predict_attr = {
+                        "gender": gender,
+                        "age": age,
+                        "hypertension": hypertension,
+                        "heartdisease": heartdisease,
+                        "married" : married,
+                        "work_type" : work_type,
+                        "residence" : residence,
+                        "glucose" : glucose,
+                        "bmi" : bmi,
+                        "smoking" : smoking
+                        }
+
+        #ml_model = predictor.predictor(predict_attr)
+        #tmrw_demand = int(round(ml_model["tmrw_demand"]))
+        #score = (round(ml_model["score"], 3)) * 100
+
+        return render_template("predict.html",predict_attr=predict_attr )#tmrw_demand=tmrw_demand, score=score)
+
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
