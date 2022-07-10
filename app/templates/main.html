@@ -61,7 +61,7 @@
     <div class="container">
         <h1>Predict likelyhood of stroke in patient</h1>
         <p>This stroke prediciton machine learning model is designed using a Random Forest Classifier. <br/> BMI,
-            Smoking History, Age, and Weight are considered as important features.</p>
+            Smoking History, Age, and Weight are considered important features.</p>
         <form action="predict" method="POST" class="form-horizontal">
         <div class="form-group">
         <p>Gender :
@@ -80,23 +80,58 @@
         </p>
         <p>Has Hypertension? :
             <select class="form-control" id="hypertension" name="hypertension">
-                <option value=1>Yes</option> <!-- maybe don't need value -->
+                <option value=1>Yes</option> 
                 <option value=0>No</option>
             </select>
         </p>
         <p>Has Heart Disease? :
             <select class="form-control" id="heartdisease" name="heartdisease">
-                <option value=1>Yes</option> <!-- maybe don't need value -->
+                <option value=1>Yes</option> 
                 <option value=0>No</option>
             </select>
         </p>
         <p>Ever Married? :
             <select class="form-control" id="married" name="married">
-                <option value=1>Yes</option> <!-- maybe don't need value -->
-                <option value=0>No</option>
+                <option>Yes</option> 
+                <option>No</option>
             </select>
         </p>
-        
+        <p>Work Type :
+            <select class="form-control" id="work_type" name="work_type">
+                <option>Private</option>
+                <option>Self-employed</option>
+                <option>Govt_job</option>
+
+            </select>
+        </p>
+        <p>Residence :
+            <select class="form-control" id="residence" name="residence">
+                <option>Rural</option>
+                <option>Urban</option>
+            </select>
+        </p>
+        <p>Average Glucose [55-272] :
+            <select class="form-control" id="glucose" name="glucose">
+                {% for i in range(55, 273): %}
+                <option>{{ i }}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <p>Body Mass Index (BMI) [10-98] :
+            <select class="form-control" id="bmi" name="bmi">
+                {% for i in range(10, 99): %}
+                <option>{{ i }}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <p>Smoking History :
+            <select class="form-control" id="smoking" name="smoking">
+                <option>Never Smoked</option>
+                <option>Formerly Smoked</option>
+                <option>Smokes</option>
+                <option>Unknown</option>
+            </select>
+        </p>
             <p align="center"><button class="btn btn-primary btn-lg" type="submit">Predict &#x1F9E0; >></button></p>
         </div>
         </form>
