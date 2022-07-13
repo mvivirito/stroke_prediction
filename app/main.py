@@ -10,6 +10,9 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import app.predictor as predictor
 
+import json
+import plotly
+import plotly.express as px
 
 from os.path import join
 
@@ -48,9 +51,28 @@ def main():
 
 @app.route('/visual', methods=["POST", "GET"])
 def visual():
+
+    
+
+    fig1 = px.histogram(stroke_data, x="age", y="stroke" )
+
+    graphJSON1 = json.dumps(fig1, cls=plotly.utils.PlotlyJSONEncoder)
+
+    fig2 = px.histogram(stroke_data, x="bmi", y="stroke")
+
+    graphJSON2 = json.dumps(fig2, cls=plotly.utils.PlotlyJSONEncoder)
+
+    fig3 = px.scatter(stroke_data, x="age", y="bmi")
+
+    graphJSON3 = json.dumps(fig3, cls=plotly.utils.PlotlyJSONEncoder)
+
+
     return render_template('visual.html',
                            PageTitle = "Visual",
-                           table=[table_data.to_html(classes=["table-bordered", "table-striped", "table-hover",], index = False)]
+                           table=[table_data.to_html(classes=["table-bordered", "table-striped", "table-hover",], index = False)],
+                           graphJSON1=graphJSON1,
+                           graphJSON2=graphJSON2,
+                           graphJSON3=graphJSON3
                            )
 
 @app.route("/predict", methods=["GET", "POST"])
